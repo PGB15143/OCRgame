@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- 일시정지 버튼 -->
+    <Button
+        android:id="@+id/btnPause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ⅱ"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="#FF5722"
+        android:textColor="#FFFFFF"/>
+
+    <!-- 게임 화면 -->
+    <LinearLayout
+        android:id="@+id/gameContent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_below="@id/btnPause"
+        android:padding="16dp">
+
+
+        <TextView
+            android:id="@+id/highScoreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="최고기록"
+            android:textSize="18sp"/>
+
+
+        <ProgressBar
+            android:id="@+id/timerBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_marginBottom="16dp"
+            android:max="1000"
+            android:progress="100" />
+
+
+        <LinearLayout
+            android:id="@+id/lifeContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="8dp">
+
+
+            <ImageView
+                android:id="@+id/heart1"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/heart_full"
+                android:layout_margin="4dp"/>
+
+            <ImageView
+                android:id="@+id/heart2"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/heart_full"
+                android:layout_margin="4dp"/>
+
+            <ImageView
+                android:id="@+id/heart3"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/heart_full"
+                android:layout_margin="4dp"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/wordText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text=""
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/scoreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="점수 0"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/comboText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="콤보 0"
+            android:textSize="16sp" />
+
+        <Button
+        android:id="@+id/answer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="#4CAF50"
+        android:text=""
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/answer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="#4CAF50"
+        android:text=""
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/answer3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="#4CAF50"
+        android:text=""
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/answer4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#4CAF50"
+        android:text=""
+        android:textSize="30sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

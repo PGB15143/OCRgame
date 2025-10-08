@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FAFAFA"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:layout_editor_absoluteX="201dp"
+        tools:layout_editor_absoluteY="-288dp">
+
+        <!-- 게임하기 버튼 -->
+        <Button
+            android:id="@+id/btnGame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="게임하기"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <!-- 사진으로 단어 저장 버튼 -->
+        <Button
+            android:id="@+id/btnSaveWords"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="사진으로 단어 저장"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+        <!-- 파일에서 이미지 불러오기 버튼 -->
+        <Button
+            android:id="@+id/btnDocument"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="#8B4499"
+            android:text="폴더에서 이미지 불러오기"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <!-- 단어 관리 버튼 -->
+        <Button
+            android:id="@+id/btnWordManagement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="데이터 셋/단어 관리"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <!-- 기존 데이터셋 관리 버튼 -->
+        <Button
+            android:id="@+id/btnSentence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="@android:color/holo_orange_dark"
+            android:text="영어 문장에서 단어 추출하기"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="@color/design_default_color_primary_variant"
+            android:text="옵션"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <!-- 종료 버튼 -->
+        <Button
+            android:id="@+id/btnExit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="종료"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/Version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ver 1.5.4" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

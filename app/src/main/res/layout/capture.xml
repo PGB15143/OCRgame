@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:visibility="visible">
+
+    <!-- OCR 인식된 텍스트 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="OCR 인식 결과"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <EditText
+            android:id="@+id/txtOcrResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:hint="OCR 결과"
+            android:padding="8dp"
+            android:textColor="@android:color/black"
+            android:scrollbars="vertical"
+            android:gravity="top"
+            android:inputType="textMultiLine" />
+    </ScrollView>
+
+    <!-- 버튼 그룹 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCapture2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="Chat GPT"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnSave1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="바로 저장"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnBack1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="뒤로가기"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>
