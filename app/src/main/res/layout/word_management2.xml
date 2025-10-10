@@ -6,14 +6,44 @@
     android:padding="10dp"
     android:background="#FAFAFA">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="단어 수정"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:paddingBottom="8dp"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="단어 수정"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tvWordCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="단어 갯수: 0개"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="14sp"
+            android:paddingEnd="8dp"/>
+
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="메뉴"
+            android:src="@drawable/ic_menu" />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/editText"
@@ -55,25 +85,6 @@
             android:textColor="@android:color/white"
             android:padding="8dp"/>
 
-        <Button
-            android:id="@+id/btnFindWord"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="찾기"
-            android:backgroundTint="@android:color/holo_purple"
-            android:textColor="@android:color/white"
-            android:padding="8dp"/>
-
-        <Button
-            android:id="@+id/btnCopy"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="불러오기"
-            android:backgroundTint="@android:color/holo_blue_dark"
-            android:textColor="@android:color/white"
-            android:padding="8dp"/>
 
         <Button
             android:id="@+id/btnBack"

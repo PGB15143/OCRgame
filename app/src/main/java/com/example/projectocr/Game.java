@@ -72,7 +72,6 @@ public class Game extends AppCompatActivity {
         wordText = findViewById(R.id.wordText);
         scoreText = findViewById(R.id.scoreText);
         comboText = findViewById(R.id.comboText);
-        highScoreText = findViewById(R.id.highScoreText);
         timerBar = findViewById(R.id.timerBar);
 
         hearts = new ImageView[3];
@@ -102,25 +101,62 @@ public class Game extends AppCompatActivity {
             }  
     
             // 통계 json파일 빼고 리스트 불러오기
+            List<String> fileDisplayList = new ArrayList<>();
             List<String> fileNames = new ArrayList<>();
+
             for (File f : files) {
                 String name = f.getName();
                 if (!name.toLowerCase().endsWith(".json")) {
                     fileNames.add(name);
+
+                    String[] record = loadHighScoreWithDate(name);
+                    String score = record[0];
+                    String date = record[1];
+                    fileDisplayList.add(name + "\n" + date + (score.equals("0") ? "" : "  |  최고기록: " + score));
                 }
             }
 
             AlertDialog.Builder builder = new AlertDialog.Builder(Game.this);
             builder.setTitle("불러올 파일을 선택하세요");
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                    android.R.layout.simple_list_item_1, fileNames);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text1, fileDisplayList) {
+                @Override
+                public android.view.View getView(int position, android.view.View convertView, android.view.ViewGroup parent) {
+                    android.view.View view = super.getView(position, convertView, parent);
+                    TextView text1 = view.findViewById(android.R.id.text1);
+                    TextView text2 = view.findViewById(android.R.id.text2);
+
+                    String fullText = fileDisplayList.get(position);
+                    String[] lines = fullText.split("\n");
+                    text1.setText(lines[0]); // 파일 이름
+
+                    if (lines.length > 1) {
+                        text2.setText(lines[1]); // 날짜 + 최고점수
+                        text2.setTextColor(android.graphics.Color.parseColor("#888888")); // 회색
+                    } else {
+                        text2.setText("");
+                    }
+
+                    // 텍스트 간격 조금 좁히기
+                    text1.setPadding(0, 0, 0, 0);
+                    text2.setPadding(0, 0, 0, 0);
+
+                    return view;
+                }
+            };
 
             builder.setAdapter(adapter, (dialog, which) -> {
                 File selectedFile = new File(dir, fileNames.get(which));
                 selectedFileName = selectedFile.getName();
-                highScore = loadHighScore(selectedFileName);
-                highScoreText.setText("신기록: " + highScore);
+
+                String[] record = loadHighScoreWithDate(selectedFileName);
+                highScore = Integer.parseInt(record[0]);
+                if (!wordList.isEmpty()) {
+                    highScoreText.setText("최고기록: " + highScore);
+                    nextQuestion();
+                }
+
+
                 readWordsFromFile(selectedFile);
             });
 
@@ -387,27 +423,30 @@ public class Game extends AppCompatActivity {
                 .show();
     }
 
-    // 최고 점수 불러오기
-    private int loadHighScore(String fileName) {
+    // 최고 점수와 날짜 불러오기
+    private String[] loadHighScoreWithDate(String fileName) {
         try {
             File recordFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + "/ProjectOCR", "record.txt");
-            if (!recordFile.exists()) return 0;
+            if (!recordFile.exists()) return new String[]{"0", "정보 없음"};
 
             BufferedReader br = new BufferedReader(new FileReader(recordFile));
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.trim().split("\\s+");
-                if (parts.length == 2 && parts[0].equals(fileName)) {
+                if (parts.length >= 3 && parts[0].equals(fileName)) {
                     br.close();
-                    return Integer.parseInt(parts[1]);
+                    String score = parts[1];
+                    String date = parts[2] + (parts.length > 3 ? " " + parts[3] : "");
+                    return new String[]{score, date};
                 }
             }
             br.close();
         } catch (Exception e) {
             Log.e("GameDebug", "최고 점수 불러오기 실패", e);
         }
-        return 0;
+        return new String[]{"0", "정보 없음"};
     }
+
 
     // 최고 점수 저장
     private void saveHighScore(String fileName, int score) {
@@ -419,14 +458,15 @@ public class Game extends AppCompatActivity {
 
             List<String> lines = new ArrayList<>();
             boolean found = false;
+            String now = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm").format(new java.util.Date());
 
             if (recordFile.exists()) {
                 BufferedReader br = new BufferedReader(new FileReader(recordFile));
                 String line;
                 while ((line = br.readLine()) != null) {
                     String[] parts = line.trim().split("\\s+");
-                    if (parts.length == 2 && parts[0].equals(fileName)) {
-                        lines.add(fileName + " " + score); // update
+                    if (parts.length >= 2 && parts[0].equals(fileName)) {
+                        lines.add(fileName + " " + score + " " + now); // update
                         found = true;
                     } else {
                         lines.add(line); // keep
@@ -436,7 +476,7 @@ public class Game extends AppCompatActivity {
             }
 
             if (!found) {
-                lines.add(fileName + " " + score);
+                lines.add(fileName + " " + score + " " + now);
             }
 
             PrintWriter writer = new PrintWriter(recordFile);
@@ -447,6 +487,7 @@ public class Game extends AppCompatActivity {
             Log.e("GameDebug", "최고 점수 저장 실패", e);
         }
     }
+
 
     // 통계 저장
     private void saveWordStatsToJson() {
@@ -627,8 +668,8 @@ public class Game extends AppCompatActivity {
 
             int correct = stats[0];
             int wrong = stats[1];
-            // 가중치 계산: 기본 1 + 오답 수 * 5 - 정답 수
-            int weight = Math.max(1, 1 + wrong * 5 - correct);
+            // 가중치 계산: 기본 10 + 오답 수 * 3 - 정답 수
+            int weight = Math.max(10, 1 + wrong * 3 - correct);
             // 가중치만큼 리스트에 추가
             for (int i = 0; i < weight; i++) {
                 weightedList.add(word);

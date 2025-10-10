@@ -205,7 +205,7 @@ public class Capture2 extends AppCompatActivity {
         messages.put(userMsg);
 
         JSONObject requestJson = new JSONObject();
-        requestJson.put("model", "gpt-5-nano");
+        requestJson.put("model", "gpt-5-mini");
         requestJson.put("messages", messages);
         requestJson.put("max_completion_tokens", 20000); // 적절히 제한
 

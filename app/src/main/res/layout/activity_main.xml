@@ -94,7 +94,7 @@
             android:id="@+id/Version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ver 1.5.4" />
+            android:text="ver 1.5.5" />
 
     </LinearLayout>
 

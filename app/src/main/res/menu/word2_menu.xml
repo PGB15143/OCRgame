@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_find"
+        android:title="찾기" />
+    <item
+        android:id="@+id/menu_copy"
+        android:title="파일 불러오기" />
+    <item
+        android:id="@+id/menu_sort"
+        android:title="알파벳 오름차순 정렬" />
+    <item
+        android:id="@+id/menu_overlapword"
+        android:title="중복인 영어단어 찾기" />
+    <item
+        android:id="@+id/menu_overlap"
+        android:title="중복인 영어단어+뜻 삭제" />
+</menu>

@@ -26,15 +26,6 @@
         android:layout_below="@id/btnPause"
         android:padding="16dp">
 
-
-        <TextView
-            android:id="@+id/highScoreText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="최고기록"
-            android:textSize="18sp"/>
-
-
         <ProgressBar
             android:id="@+id/timerBar"
             style="?android:attr/progressBarStyleHorizontal"
