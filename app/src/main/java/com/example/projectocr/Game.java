@@ -1,8 +1,6 @@
 package com.example.projectocr;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -36,11 +34,9 @@ public class Game extends AppCompatActivity {
 
     private boolean isPaused = false;
     private Button btnPause;
-
     private TextView wordText, scoreText, lifeText, comboText, highScoreText;
     private Button[] answerButtons = new Button[4];
     private ProgressBar timerBar;
-
     private HashMap<String, String> wordMap = new HashMap<>();
     private List<String> wordList = new ArrayList<>();
     private String currentAnswer;
