@@ -43,28 +43,6 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_marginTop="8dp">
-
-
-            <ImageView
-                android:id="@+id/heart1"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/heart_full"
-                android:layout_margin="4dp"/>
-
-            <ImageView
-                android:id="@+id/heart2"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/heart_full"
-                android:layout_margin="4dp"/>
-
-            <ImageView
-                android:id="@+id/heart3"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/heart_full"
-                android:layout_margin="4dp"/>
         </LinearLayout>
 
 
@@ -92,41 +70,14 @@
             android:text="콤보 0"
             android:textSize="16sp" />
 
-        <Button
-        android:id="@+id/answer1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="#4CAF50"
-        android:text=""
-        android:textSize="30sp" />
-
-    <Button
-        android:id="@+id/answer2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="#4CAF50"
-        android:text=""
-        android:textSize="30sp" />
-
-    <Button
-        android:id="@+id/answer3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="#4CAF50"
-        android:text=""
-        android:textSize="30sp" />
-
-    <Button
-        android:id="@+id/answer4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#4CAF50"
-        android:text=""
-        android:textSize="30sp" />
-
+        <LinearLayout
+            android:id="@+id/answerContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="16dp">
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

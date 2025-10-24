@@ -188,12 +188,12 @@ public class Capture2 extends AppCompatActivity {
                 JSONObject imageUrlObj = new JSONObject();
                 imageUrlObj.put("url", "data:image/jpeg;base64," + base64Image);
 
-                imgPart.put("image_url", imageUrlObj); // ✅ 객체 형태로 전달
+                imgPart.put("image_url", imageUrlObj); // 객체 형태로 전달
                 contentArray.put(imgPart);
 
-                Log.d("ChatGPT_REQUEST", "이미지 포함됨 ✅ 크기: " + imageBytes.length);
+                Log.d("ChatGPT_REQUEST", "이미지 포함됨 크기: " + imageBytes.length);
             } else {
-                Log.d("ChatGPT_REQUEST", "이미지 없음 ❌");
+                Log.d("ChatGPT_REQUEST", "이미지 없음");
             }
 
 
@@ -212,11 +212,11 @@ public class Capture2 extends AppCompatActivity {
         // 이미지 잘 보내졌는지 로그확인용
         String reqStr = requestJson.toString();
         if (reqStr.contains("image_url")) {
-            Log.d("ChatGPT_REQUEST", "이미지 포함됨 ✅ 길이: " + reqStr.length());
+            Log.d("ChatGPT_REQUEST", "이미지 포함됨 길이: " + reqStr.length());
             Log.d("ChatGPT_REQUEST", reqStr.substring(0, 500) + "\n...\n" +
                     reqStr.substring(reqStr.length() - 500));
         } else {
-            Log.d("ChatGPT_REQUEST", "이미지 없음 ❌");
+            Log.d("ChatGPT_REQUEST", "이미지 없음");
         }
 
         try (OutputStream os = conn.getOutputStream()) {

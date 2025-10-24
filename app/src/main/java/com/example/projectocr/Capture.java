@@ -194,7 +194,7 @@ public class Capture extends AppCompatActivity {
         return parseOcrResponse(responseJson);
     }
 
-    // Vision API 응답에서 OCR 결과 추출
+    // Google Vision API 응답에서 OCR 결과 추출
     private String parseOcrResponse(String responseJson) {
         try {
             Log.d("OCR_RESPONSE", "API 응답: " + responseJson);

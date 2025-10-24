@@ -160,35 +160,51 @@ public class WordManagement extends AppCompatActivity {
                 .show();
     }
 
+    // 최고기록 저장파일 업데이트
     private void updateRecordFileName(String oldName, String newName) {
-        File recordFile = new File(directory, "record.txt");
+        File recordFile = new File(directory, "record.json");
         if (!recordFile.exists()) return;
 
         try {
-            File tempFile = new File(directory, "temp_record.txt");
+            // JSON 파일 읽기
             BufferedReader reader = new BufferedReader(new FileReader(recordFile));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-
+            StringBuilder sb = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
-                if (line.startsWith(oldName + " ")) {
-                    line = newName + line.substring(oldName.length());
-                }
-                writer.write(line);
-                writer.newLine();
+                sb.append(line);
             }
-
             reader.close();
-            writer.close();
 
-            if (recordFile.delete()) {
-                tempFile.renameTo(recordFile);
+            org.json.JSONObject json = new org.json.JSONObject(sb.toString());
+            org.json.JSONObject updatedJson = new org.json.JSONObject();
+
+            // names()는 JSONArray를 반환하므로 반복문 수정
+            org.json.JSONArray keys = json.names();
+            if (keys != null) {
+                for (int i = 0; i < keys.length(); i++) {
+                    String key = keys.getString(i);
+                    org.json.JSONObject entry = json.getJSONObject(key);
+                    String fileName = entry.optString("fileName", "");
+
+                    // 파일 이름이 일치하면 변경
+                    if (fileName.equals(oldName)) {
+                        entry.put("fileName", newName);
+                    }
+
+                    updatedJson.put(key, entry);
+                }
             }
 
-        } catch (IOException e) {
+            // JSON 파일 다시 저장
+            java.io.PrintWriter pw = new java.io.PrintWriter(recordFile);
+            pw.write(updatedJson.toString(2)); // 보기 좋게 저장 (들여쓰기 2칸)
+            pw.close();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     // txt 파일 리스트 불러오기
     private void loadFileList() {

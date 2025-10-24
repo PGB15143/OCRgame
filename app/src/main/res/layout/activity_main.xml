@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:backgroundTint="#8B4499"
-            android:text="폴더에서 이미지 불러오기"
+            android:text="갤러리에서 이미지 불러오기"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
@@ -94,7 +94,7 @@
             android:id="@+id/Version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ver 1.5.5" />
+            android:text="ver 1.6" />
 
     </LinearLayout>
 

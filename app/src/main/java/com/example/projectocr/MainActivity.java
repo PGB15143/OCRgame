@@ -63,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
             dispatchTakePictureIntent();  // 사진 찍는 건 기존 로직
         });
 
+        btnOption.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Options.class);
+            startActivity(intent);
+        });
+
 
         btnExit.setOnClickListener(v -> {
             finish(); // 앱 종료
