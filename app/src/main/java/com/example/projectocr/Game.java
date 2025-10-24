@@ -771,7 +771,7 @@ public class Game extends AppCompatActivity {
             int wrongWeight = prefs.getInt("wrongWeight", 3);
             int correctWeight = prefs.getInt("correctWeight", 1);
 
-            int weight = Math.max(base, 1 + wrong * wrongWeight - correct * correctWeight);
+            int weight = base + wrong * wrongWeight - correct * correctWeight;
             // 가중치만큼 리스트에 추가
             for (int i = 0; i < weight; i++) {
                 weightedList.add(word);

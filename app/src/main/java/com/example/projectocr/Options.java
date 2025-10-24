@@ -34,7 +34,7 @@ public class Options extends AppCompatActivity {
         saveButton.setOnClickListener(v -> saveSettings());
     }
 
-    // 가중치 변수 불러오기
+    // 변수들 불러오기
     private void loadSettings() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         int base = prefs.getInt("baseWeight", 10);

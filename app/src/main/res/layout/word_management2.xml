@@ -2,38 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FAFAFA"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="#FAFAFA">
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
             android:text="단어 수정"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:paddingBottom="8dp"/>
+            android:textStyle="bold" />
 
         <Space
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvWordCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingEnd="8dp"
             android:text="단어 갯수: 0개"
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="14sp"
-            android:paddingEnd="8dp"/>
+            android:textSize="14sp" />
 
         <ImageButton
             android:id="@+id/menuButton"
@@ -42,7 +42,6 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="메뉴"
             android:src="@drawable/ic_menu" />
-
     </LinearLayout>
 
     <EditText
@@ -51,28 +50,28 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@android:color/white"
-        android:padding="8dp"
-        android:textSize="16sp"
         android:gravity="top"
-        android:inputType="textMultiLine"/>
+        android:inputType="textMultiLine"
+        android:padding="8dp"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/searchEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:hint="검색어 입력"
-        android:visibility="gone"
         android:imeOptions="actionDone"
         android:inputType="text"
-        android:background="@android:color/white"
         android:padding="8dp"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         android:paddingTop="5dp">
 
         <Button
@@ -80,10 +79,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="저장"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:textColor="@android:color/white"
-            android:padding="8dp"/>
+            android:padding="8dp"
+            android:text="저장"
+            android:textColor="@android:color/white" />
 
 
         <Button

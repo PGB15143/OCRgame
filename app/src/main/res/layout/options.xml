@@ -82,7 +82,7 @@
             android:id="@+id/WeightFormula"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="가중치 공식: \n(기본 가중치, [오답 가중치 x 오답 갯수] - [정답 가중치 x 정답 갯수]) 중 큰 것" />
+            android:text="가중치 공식: \n기본 가중치 + [오답 가중치 x 오답 갯수] - [정답 가중치 x 정답 갯수]" />
 
         <LinearLayout
             android:layout_width="match_parent"
